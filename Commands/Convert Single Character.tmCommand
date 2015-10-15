@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+# -- Imports -------------------------------------------------------------------
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/support.rb'
+
+# -- Main ----------------------------------------------------------------------
+
+line = STDIN.read
+line_index = ENV['TM_LINE_INDEX'].to_i
+
+if line_index &lt;= 0 then
+  TextMate.exit_show_tool_tip "No character on the left side of the caret!"
+else
+  print "#{line.replace_character(line_index)}"
+end
+
+
+</string>
+	<key>input</key>
+	<string>line</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^~</string>
+	<key>name</key>
+	<string>Convert Single Character</string>
+	<key>outputCaret</key>
+	<string>interpolateByLine</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
+	<key>uuid</key>
+	<string>EBC0D447-9D38-4767-ACD1-533833E959A3</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -13,6 +13,8 @@
 	<dict>
 		<key>items</key>
 		<array>
+			<string>EBC0D447-9D38-4767-ACD1-533833E959A3</string>
+			<string>------------------------------------</string>
 			<string>2A66FE8E-163B-4FEF-A3C8-2497115ED180</string>
 			<string>B286B5E4-E57D-4402-9E6E-656645015DD9</string>
 			<string>9CAB3C22-4A43-4101-A2C9-5ECFF02027EF</string>
@@ -125,7 +127,6 @@
 					<string>2E823C0E-9445-4CDB-9290-55EFD25D78D4</string>
 					<string>5DBF6046-0A31-497C-B2C3-8AA8DDAA5C3F</string>
 					<string>80141BE8-C90B-4EEE-AB40-1C5CA742A305</string>
-					<string>21FFFF96-66D8-4C33-858B-6A16C8FA3BFA</string>
 				</array>
 				<key>name</key>
 				<string>Math Symbols</string>
