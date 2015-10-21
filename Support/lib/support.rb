@@ -5,7 +5,11 @@
 
 # This class represents a mapping table for strings.
 class REPLACEMENT
-  MAP = { 'a' => 'α', 'α' => 'a', 'c' => 'γ', 'γ' => 'c' }
+  CIRCULAR_MAPPING = { 'a' => 'α', 'c' => 'γ' }
+
+  MAP = Hash[CIRCULAR_MAPPING.keys.map do |key|
+    CIRCULAR_MAPPING[key].chars.map { |char| [key, char, char, key] }
+  end.flatten.each_slice(2).to_a]
 
   # Map a certain single character string to another single character string.
   #
