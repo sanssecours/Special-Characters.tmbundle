@@ -1,11 +1,16 @@
 # encoding: UTF-8
 # rubocop:  disable Style/AsciiComments
 
+# -- Imports -------------------------------------------------------------------
+
+require 'yaml'
+
 # -- Classes -------------------------------------------------------------------
 
 # This class represents a mapping table for strings.
 class REPLACEMENT
-  CIRCULAR_MAPPING = { 'a' => 'α', 'c' => 'γ' }
+  CIRCULAR_MAPPING = YAML.load_file(
+    "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml")['character_map']
 
   MAP = Hash[CIRCULAR_MAPPING.keys.map do |key|
     CIRCULAR_MAPPING[key].chars.map { |char| [key, char, char, key] }

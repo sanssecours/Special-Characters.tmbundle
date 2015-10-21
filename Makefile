@@ -4,6 +4,8 @@
 
 RUBY_FILES = Support/lib/*.rb
 
+export TM_BUNDLE_SUPPORT = $(CURDIR)/Support
+
 # -- Rules ---------------------------------------------------------------------
 
 all: check_style
