@@ -1,11 +1,25 @@
 # encoding: UTF-8
 # rubocop:  disable Style/AsciiComments
 
+# -- Classes -------------------------------------------------------------------
+
+# This class represents a mapping table for strings.
+class REPLACEMENT
+  MAP = { 'a' => 'α', 'α' => 'a', 'c' => 'γ', 'γ' => 'c' }
+
+  # Map a certain single character string to another single character string.
+  #
+  # [character] A string that specifies the source of the mapping.
+  #
+  # The function returns the character mapped to the input +character+ or +nil+
+  # if there exists no mapping for +character+.
+  def self.[](character)
+    MAP[character]
+  end
+end
+
 # This class adds extra functionality for manipulating strings.
 class String
-  REPLACEMENT = { 'a' => 'α', 'α' => 'a',
-                  'c' => 'γ', 'γ' => 'c' }
-
   # Determine the character before the character at byte position +position+.
   #
   # = Arguments
