@@ -13,7 +13,8 @@ class REPLACEMENT
     "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml")['character_map']
 
   MAP = Hash[CIRCULAR_MAPPING.keys.map do |key|
-    CIRCULAR_MAPPING[key].chars.map { |char| [key, char, char, key] }
+    mappings = key + CIRCULAR_MAPPING[key] + key
+    (mappings.length - 1).times.map { |index| mappings[index..index + 1].chars }
   end.flatten.each_slice(2).to_a]
 
   # Map a certain single character string to another single character string.
@@ -77,8 +78,8 @@ class String
   #  => "Touγhé Amoré"
   #  >> 'aaa'.replace_character(1)
   #  => "αaa"
-  #  >> 'hello'.replace_character(5)
-  #  => "hello"
+  #  >> 'hell_'.replace_character(5)
+  #  => "hell_"
   #  >> text = 'haha'
   #  >> text.replace_character(2)
   #  => "hαha"
