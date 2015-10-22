@@ -1,3 +1,74 @@
 character_map:
-  a: α
-  c: γ
+
+  # -- Numbers -----------------------------------------------------------------
+
+  '0': ₀⁰
+  '1': ₁¹
+  '2': ₂²
+  '3': ₃³
+  '4': ₄⁴
+  '5': ₅⁵
+  '6': ₆⁶
+  '7': ₇⁷
+  '8': ₈⁸
+  '9': ₉⁹
+
+  # -- Lowercase Letters -------------------------------------------------------
+
+  a: αₐ     # alpha, subscript alpha
+  b: βᵦ     # beta, subscript beta
+  c: χᵪ     # chi, subscript chi
+  d: δ      # delta
+  e: εηₑ∈∉  # epsilon, eta, subscript e, element of, not an element of
+  g: γᵧ     # gamma, subscript gamma
+  i: ιᵢⁱ    # iota, subscript i, superscript i
+  k: κ      # kappa
+  l: λ      # lambda
+  m: μ      # mu
+  n: νⁿ     # nu, superscript n
+  o: ωₒ     # omega, subscript o
+  p: πφᵩψ   # pi, phi, subscript phi, psi
+  r: ρᵨᵣ    # rho, subscript rho, subscript r
+  s: σς     # sigma, sigma (alternative form)
+  t: θτ     # theta, tau
+  u: υᵤ∪    # upsilon, subscript u, union
+  v: ᵥ∨↓    # subscript v, down arrow, or
+  x: ξₓ     # xi, subscript x
+  z: ζ      # zeta
+
+  # -- Uppercase Letters ------------------------------------------------------
+
+  A: Α    # alpha
+  B: Β    # beta
+  C: Χ    # chi
+  D: Δ    # delta
+  E: ΕΗ∃∄ # epsilon, eta, exists, exists not
+  G: Γ    # gamma
+  I: Ι    # iota
+  K: Κ    # kappa
+  L: Λ    # lambda
+  M: Μ    # mu
+  N: Νℕ   # nu, double struck capital N
+  O: Ω∅   # omega, empty set
+  P: ΠΦΨ  # pi, phi, psi
+  R: Ρ    # rho
+  S: Σ    # sigma
+  T: ΘΤ   # theta, tau
+  U: Υ    # upsilon
+  X: Ξ    # xi
+  Z: Ζℤ   # zeta, double struck capital Z
+
+  # -- Misc --------------------------------------------------------------------
+
+  '^': ∧¬↑⇑
+  '<': ←⇐
+  '>': →⇒
+  '=': ₌⁼↔︎⇔≔≕
+  '-': ₋⁻
+  '+': ₊⁺
+  '(': ₍⁽⊂⊆⊊
+  ')': ₎⁾⊃⊇⊋
+  '[': ⟦⌊
+  ']': ⟧⌋
+  '$': ⇧⌥⌘↩⎋⌫ # Key symbols
+

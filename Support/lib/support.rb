@@ -75,7 +75,7 @@ class String
   #  doctest: Replace the character at a certain position of a string.
   #
   #  >> 'Touché Amoré'.replace_character(4)
-  #  => "Touγhé Amoré"
+  #  => "Touχhé Amoré"
   #  >> 'aaa'.replace_character(1)
   #  => "αaa"
   #  >> 'hell_'.replace_character(5)
