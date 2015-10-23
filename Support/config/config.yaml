@@ -26,7 +26,7 @@ character_map:
   l: λ      # lambda
   m: μ      # mu
   n: νⁿ     # nu, superscript n
-  o: ωₒ     # omega, subscript o
+  o: ω◦ₒ    # omega, white bullet, subscript o
   p: πφᵩψ   # pi, phi, subscript phi, psi
   r: ρᵨᵣ    # rho, subscript rho, subscript r
   s: σς     # sigma, sigma (alternative form)
@@ -68,7 +68,7 @@ character_map:
   '+': ₊⁺
   '(': ₍⁽⊂⊆⊊
   ')': ₎⁾⊃⊇⊋
-  '[': ⟦⌊
-  ']': ⟧⌋
+  '[': ⊏⟦⌊
+  ']': ⊐⟧⌋
   '$': ⇧⌥⌘↩⎋⌫ # Key symbols
 
