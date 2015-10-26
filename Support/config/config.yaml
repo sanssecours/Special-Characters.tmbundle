@@ -17,7 +17,7 @@ character_map:
 
   a: αₐ     # alpha, subscript alpha
   b: βᵦ     # beta, subscript beta
-  c: χᵪ     # chi, subscript chi
+  c: χᵪ©    # chi, subscript chi, copyright
   d: δ      # delta
   e: εηₑ∈∉  # epsilon, eta, subscript e, element of, not an element of
   g: γᵧ     # gamma, subscript gamma
