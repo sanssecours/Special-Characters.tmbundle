@@ -55,6 +55,7 @@ character_map:
   S: Σ    # sigma
   T: ΘΤ   # theta, tau
   U: Υ    # upsilon
+  V: ∀    # for all
   X: Ξ    # xi
   Z: Ζℤ   # zeta, double struck capital Z
 
