@@ -3,14 +3,64 @@
 
 # -- Imports -------------------------------------------------------------------
 
+require 'fileutils'
 require 'yaml'
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/escape'
 
 # -- Classes -------------------------------------------------------------------
 
+# This class represents the current configuration for +REPLACEMENT+.
+class CONFIGURATION
+  CONFIG_DIR = "#{Dir.home}/Library/Application Support/Special Characters"
+  CONFIG_FILE_USER = File.join(CONFIG_DIR, 'config.yaml')
+  CONFIG_FILE = "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml"
+
+  TM_MATE = ENV['TM_MATE']
+
+  # Return the hash for the current configuration.
+  #
+  # = Output
+  #
+  # This function returns a hash containing the data for the current character
+  # mapping.
+  def self.character_map
+    YAML.load_file(location)['character_map']
+  end
+
+  # Open the configuration file in TextMate.
+  #
+  # The original configuration is copied to the location +CONFIG_FILE_USER+ for
+  # this purpose. TextMate then opens the copy of the original configuration
+  # file.
+  def self.edit
+    FileUtils.mkdir_p CONFIG_DIR unless Dir.exist? CONFIG_DIR
+    FileUtils.copy(CONFIG_FILE,
+                   CONFIG_FILE_USER) unless File.exist? CONFIG_FILE_USER
+    `#{TM_MATE} #{e_sh CONFIG_FILE_USER}`
+  rescue RuntimeError => error
+    TextMate.exit_show_tool_tip(error.message)
+  end
+
+  # Get the location of the configuration file.
+  #
+  # If the user defined configuration file exists – +self.edit+ was invoked at
+  # least once – then this function returns the location of the user
+  # configuration file. Otherwise the function returns the location of the
+  # original configuration file, that is part of this bundle.
+  #
+  # = Output
+  #
+  # The function returns a string containing the location of the configuration
+  # file.
+  def self.location
+    (File.exist? CONFIG_FILE_USER) ? CONFIG_FILE_USER : CONFIG_FILE
+  end
+end
+
 # This class represents a mapping table for strings.
 class REPLACEMENT
-  CIRCULAR_MAPPING = YAML.load_file(
-    "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml")['character_map']
+  CIRCULAR_MAPPING = CONFIGURATION.character_map
 
   MAP = Hash[CIRCULAR_MAPPING.keys.map do |key|
     mappings = key + CIRCULAR_MAPPING[key] + key
