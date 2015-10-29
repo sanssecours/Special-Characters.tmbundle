@@ -19,7 +19,11 @@ class REPLACEMENT
 
   # Map a certain single character string to another single character string.
   #
+  # = Arguments
+  #
   # [character] A string that specifies the source of the mapping.
+  #
+  # = Output
   #
   # The function returns the character mapped to the input +character+ or +nil+
   # if there exists no mapping for +character+.
