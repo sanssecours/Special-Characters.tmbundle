@@ -25,7 +25,7 @@ class CONFIGURATION
   # This function returns a hash containing the data for the current character
   # mapping.
   def self.character_map
-    YAML.load_file(location)['character_map']
+    YAML.load_file(location)
   end
 
   # Open the configuration file in TextMate.
