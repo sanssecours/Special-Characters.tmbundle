@@ -77,6 +77,19 @@ class REPLACEMENT
   #
   # The function returns the character mapped to the input +character+ or +nil+
   # if there exists no mapping for +character+.
+  #
+  # = Examples
+  #
+  #  doctest: Determine the mapping for certain characters
+  #
+  #  >> REPLACEMENT['o']
+  #  => 'ω'
+  #  >> REPLACEMENT['ω']
+  #  => '◦'
+  #  >> REPLACEMENT['◦']
+  #  => 'ₒ'
+  #  >> REPLACEMENT['ₒ']
+  #  => 'o'
   def self.[](character)
     MAP[character]
   end
