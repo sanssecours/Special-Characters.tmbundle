@@ -62,8 +62,8 @@ end
 class REPLACEMENT
   CIRCULAR_MAPPING = CONFIGURATION.character_map
 
-  MAP = Hash[CIRCULAR_MAPPING.keys.map do |key|
-    mappings = key + CIRCULAR_MAPPING[key] + key
+  MAP = Hash[CIRCULAR_MAPPING.map do |mapping|
+    mappings = mapping + mapping.chars[0]
     (mappings.length - 1).times.map { |index| mappings[index..index + 1].chars }
   end.flatten.each_slice(2).to_a]
 

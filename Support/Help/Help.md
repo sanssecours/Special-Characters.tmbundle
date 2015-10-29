@@ -17,7 +17,7 @@ Each of the snippets contained in this bundle inserts a single special character
 
 Like the name already suggest, this command converts the character to the left of the caret to another symbol. By default the command is bound to the key combination `ctrl` + `~`. Each time you press this key combination the character to the left of the character is replaced by another character. The mapping between the characters is cyclic. If you for example started with the character `o` and hit the key combination for the command multiple times, then the command eventually replaces the character on the left with the letter `o` again. The configuration file (`config.yaml`) handles which character is replaced by which other character. Lets take a look at the default configuration for the letter `o`:
 
-    o: ω◦ₒ # omega, white bullet, subscript o
+    - oω◦ₒ # omega, white bullet, subscript o
 
 The above line translates to the following mapping:
 

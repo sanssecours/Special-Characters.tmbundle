@@ -2,74 +2,74 @@ character_map:
 
   # -- Numbers -----------------------------------------------------------------
 
-  '0': ₀⁰
-  '1': ₁¹
-  '2': ₂²
-  '3': ₃³
-  '4': ₄⁴
-  '5': ₅⁵
-  '6': ₆⁶
-  '7': ₇⁷
-  '8': ₈⁸
-  '9': ₉⁹
+  - 0₀⁰
+  - 1₁¹
+  - 2₂²
+  - 3₃³
+  - 4₄⁴
+  - 5₅⁵
+  - 6₆⁶
+  - 7₇⁷
+  - 8₈⁸
+  - 9₉⁹
 
   # -- Lowercase Letters -------------------------------------------------------
 
-  a: αₐ     # alpha, subscript alpha
-  b: βᵦ     # beta, subscript beta
-  c: χᵪ©    # chi, subscript chi, copyright
-  d: δ      # delta
-  e: εηₑ∈∉  # epsilon, eta, subscript e, element of, not an element of
-  g: γᵧ     # gamma, subscript gamma
-  i: ιᵢⁱ    # iota, subscript i, superscript i
-  k: κ      # kappa
-  l: λ      # lambda
-  m: μ      # mu
-  n: νⁿ     # nu, superscript n
-  o: ω◦ₒ    # omega, white bullet, subscript o
-  p: πφᵩψ   # pi, phi, subscript phi, psi
-  r: ρᵨᵣ    # rho, subscript rho, subscript r
-  s: σς     # sigma, sigma (alternative form)
-  t: θτ     # theta, tau
-  u: υᵤ∪    # upsilon, subscript u, union
-  v: ᵥ∨↓    # subscript v, down arrow, or
-  x: ξₓ     # xi, subscript x
-  z: ζ      # zeta
+  - aαₐ     # alpha, subscript alpha
+  - bβᵦ     # beta, subscript beta
+  - cχᵪ©    # chi, subscript chi, copyright
+  - dδ      # delta
+  - eεηₑ∈∉  # epsilon, eta, subscript e, element of, not an element of
+  - gγᵧ     # gamma, subscript gamma
+  - iιᵢⁱ    # iota, subscript i, superscript i
+  - kκ      # kappa
+  - lλ      # lambda
+  - mμ      # mu
+  - nνⁿ     # nu, superscript n
+  - oω◦ₒ    # omega, white bullet, subscript o
+  - pπφᵩψ   # pi, phi, subscript phi, psi
+  - rρᵨᵣ    # rho, subscript rho, subscript r
+  - sσς     # sigma, sigma (alternative form)
+  - tθτ     # theta, tau
+  - uυᵤ∪    # upsilon, subscript u, union
+  - vᵥ∨↓    # subscript v, down arrow, or
+  - xξₓ     # xi, subscript x
+  - zζ      # zeta
 
   # -- Uppercase Letters ------------------------------------------------------
 
-  A: Α    # alpha
-  B: Β    # beta
-  C: Χ    # chi
-  D: Δ    # delta
-  E: ΕΗ∃∄ # epsilon, eta, exists, exists not
-  G: Γ    # gamma
-  I: Ι    # iota
-  K: Κ    # kappa
-  L: Λ    # lambda
-  M: Μ    # mu
-  N: Νℕ   # nu, double struck capital N
-  O: Ω∅   # omega, empty set
-  P: ΠΦΨ  # pi, phi, psi
-  R: Ρ    # rho
-  S: Σ    # sigma
-  T: ΘΤ   # theta, tau
-  U: Υ    # upsilon
-  V: ∀    # for all
-  X: Ξ    # xi
-  Z: Ζℤ   # zeta, double struck capital Z
+  - AΑ    # alpha
+  - BΒ    # beta
+  - CΧ    # chi
+  - DΔ    # delta
+  - EΕΗ∃∄ # epsilon, eta, exists, exists not
+  - GΓ    # gamma
+  - IΙ    # iota
+  - KΚ    # kappa
+  - LΛ    # lambda
+  - MΜ    # mu
+  - NΝℕ   # nu, double struck capital N
+  - OΩ∅   # omega, empty set
+  - PΠΦΨ  # pi, phi, psi
+  - RΡ    # rho
+  - SΣ    # sigma
+  - TΘΤ   # theta, tau
+  - UΥ    # upsilon
+  - V∀    # for all
+  - XΞ    # xi
+  - ZΖℤ   # zeta, double struck capital Z
 
   # -- Misc --------------------------------------------------------------------
 
-  '^': ∧¬↑⇑
-  '<': ←⇐
-  '>': →⇒
-  '=': ₌⁼↔︎⇔≔≕
-  '-': ₋⁻
-  '+': ₊⁺
-  '(': ₍⁽⊂⊆⊊
-  ')': ₎⁾⊃⊇⊋
-  '[': ⊏⟦⌊
-  ']': ⊐⟧⌋
-  '$': ⇧⌥⌘↩⎋⌫ # Key symbols
+  - ^∧¬↑⇑
+  - <←⇐
+  - '>→⇒'
+  - =₌⁼↔︎⇔≔≕
+  - -₋⁻
+  - +₊⁺
+  - (₍⁽⊂⊆⊊
+  - )₎⁾⊃⊇⊋
+  - '[⊏⟦⌊'
+  - ']⊐⟧⌋'
+  - $⇧⌥⌘↩⎋⌫ # Key symbols
 
