@@ -26,6 +26,8 @@ class CONFIGURATION
   # mapping.
   def self.character_map
     YAML.load_file(location)
+  rescue RuntimeError => error
+    TextMate.exit_show_tool_tip(error.message)
   end
 
   # Open the configuration file in TextMate.
