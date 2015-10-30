@@ -34,3 +34,29 @@ This means that if you place the caret after one of the characters on the left a
 <center>
     <img src="Images/Convert Single Character.gif" alt="Insert various special characters via “Convert Single Character”" style="width: 200px;"/>
 </center>
+
+## Edit Configuration
+
+“Convert Single Character” is fully customizable. To change the mappings use the included command “Edit Configuration”. The first time you call this command it copies the default configuration to `~/Library/Application Support/Special Characters/config.yaml`. It then opens this configuration file in TextMate. You can change the configuration for existing items and also add custom mapping if you like. For example, one of the lines in the default configuration looks like this:
+
+    - 0₀⁰
+
+The above line states that “Convert Single Character” replaces `0` by `₀`, `₀` by `⁰` and `⁰` by `0`. If you instead want to replace `0` by `☺` and `☺` by `0` then change this line to the following:
+
+    - 0☺
+
+To add a mapping just add the characters `- ` at the beginning of a line in the configuration followed by the mapping you want to add. For example, the line
+
+    - '%💩🐶🐳🌻'
+
+adds the following mappings between characters:
+
+    % → 💩
+    💩 → 🐶
+    🐶 → 🐳
+    🐳 → 🌻
+    🌻 → %
+
+The mapping in the last example starts and ends with single quotes (`'`). We add these quotes since `%` is a special character in YAML. You only need to quote the mapping, if it contains characters that have special meaning in YAML. For more information about YAML, please take a look at the [Wikipedia article](https://en.wikipedia.org/wiki/YAML) about the language.
+
+If you want to reset to the default mapping, just delete the file `~/Library/Application Support/Special Characters/config.yaml`.
