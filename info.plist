@@ -9,7 +9,7 @@
 	<key>description</key>
 	<string>This bundle allows you to quickly insert special characters such as “β”, “₃”,
 “⁸” into your document. For more information please take a look at the
-documententation – available via the command “Help”.
+documentation – available via the command “Help”.
 </string>
 	<key>mainMenu</key>
 	<dict>
