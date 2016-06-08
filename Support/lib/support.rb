@@ -13,8 +13,9 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/escape'
 # This class represents the current configuration for +REPLACEMENT+.
 class CONFIGURATION
   CONFIG_DIR = "#{Dir.home}/Library/Application Support/Special Characters"
+               .freeze
   CONFIG_FILE_USER = File.join(CONFIG_DIR, 'config.yaml')
-  CONFIG_FILE = "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml"
+  CONFIG_FILE = "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml".freeze
 
   TM_MATE = ENV['TM_MATE']
 
@@ -66,7 +67,9 @@ class REPLACEMENT
 
   MAP = Hash[CIRCULAR_MAPPING.map do |mapping|
     mappings = mapping + mapping.chars[0]
-    (mappings.length - 1).times.map { |index| mappings[index..index + 1].chars }
+    Array.new((mappings.length - 1)) do |index|
+      mappings[index..index + 1].chars
+    end
   end.flatten.each_slice(2).to_a]
 
   # Map a certain single character string to another single character string.
@@ -156,7 +159,7 @@ class String
   #  => "haha"
   def replace_character(position)
     character = REPLACEMENT[char_before(position)]
-    (character.nil?) ? self : (byteslice(0, position).chars[0..-2].join +
+    character.nil? ? self : (byteslice(0, position).chars[0..-2].join +
                                character + byteslice(position..-1))
   end
 end
