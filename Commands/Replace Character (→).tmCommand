@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+
+# -- Imports -------------------------------------------------------------------
+
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/support.rb'
+
+# -- Main ----------------------------------------------------------------------
+
+convert_single_character
+</string>
+	<key>input</key>
+	<string>line</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^`</string>
+	<key>name</key>
+	<string>Replace Character (→)</string>
+	<key>outputCaret</key>
+	<string>interpolateByLine</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
+	<key>uuid</key>
+	<string>EBC0D447-9D38-4767-ACD1-533833E959A3</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>

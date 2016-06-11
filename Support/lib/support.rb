@@ -7,6 +7,7 @@ require 'fileutils'
 require 'yaml'
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/escape'
+require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
 
 # -- Classes -------------------------------------------------------------------
 
@@ -61,7 +62,13 @@ class CONFIGURATION
   end
 end
 
-# This class represents a mapping table for strings.
+# This class represents a mapping table for single character strings.
+#
+# If there is a mapping for a certain character via +[]+, then there is also a
+# mapping back accessible via +self.previous+. This means the following
+# condition holds:
+#
+#   +REPLACEMENT.previous(REPLACEMENT[char]) == char+.
 class REPLACEMENT
   CIRCULAR_MAPPING = CONFIGURATION.character_map
 
@@ -71,6 +78,8 @@ class REPLACEMENT
       mappings[index..index + 1].chars
     end
   end.flatten.each_slice(2).to_a]
+
+  MAP_REVERSED = Hash[MAP.map { |key, value| [value, key] }]
 
   # Map a certain single character string to another single character string.
   #
@@ -97,6 +106,22 @@ class REPLACEMENT
   #  => 'o'
   def self.[](character)
     MAP[character]
+  end
+
+  # Map a single character string (back) to another single character string.
+  #
+  # This function returns the reversed mapping of +[]+.
+  #
+  # = Examples
+  #
+  #  doctest: Determine the reverse mapping for certain characters
+  #
+  #  >> REPLACEMENT.previous('ω')
+  #  => 'o'
+  #  >> REPLACEMENT.previous(REPLACEMENT['v'])
+  #  => 'v'
+  def self.previous(character)
+    MAP_REVERSED[character]
   end
 end
 
@@ -133,14 +158,21 @@ class String
   # Replace the character before the one at byte position +position+.
   #
   # This function replaces the character before the character at byte index
-  # +position+ with a certain character. It replaces the character with the one
-  # that the mapping +REPLACEMENT+ returns, if we use the character that should
-  # be replaced as key. The method does not change the original string value.
+  # +position+. The function uses the character that the mapping
+  # +REPLACEMENT[character]+ returns as replacement, if +reverse+ is +false+.
+  # Otherwise it uses the replacement character returned by
+  # +REPLACEMENT.previous(character)+.
+  #
+  # The method does not change the original string value.
   #
   # = Arguments
   #
   # [position] The index of the character in bytes of the character after the
   #            one this function replaces.
+  #
+  # [reverse]  This option specifies if the character returned by
+  #            +REPLACEMENT[]+ or +REPLACEMENT[].previous+ should be used as
+  #            replacement.
   #
   # = Examples
   #
@@ -157,9 +189,38 @@ class String
   #  => "hαha"
   #  >> text
   #  => "haha"
-  def replace_character(position)
-    character = REPLACEMENT[char_before(position)]
+  #  >> 'test'.replace_character(2, true)
+  #  => "t∉st"
+  def replace_character(position, reverse = false)
+    character = if reverse
+                  REPLACEMENT.previous(char_before(position))
+                else
+                  REPLACEMENT[char_before(position)]
+                end
     character.nil? ? self : (byteslice(0, position).chars[0..-2].join +
-                               character + byteslice(position..-1))
+                             character + byteslice(position..-1))
+  end
+end
+
+# -- Function ------------------------------------------------------------------
+
+# Replace the character before the caret with another character.
+#
+# The replacement character is taken from the circular mapping specified in
+# +config.yaml+.
+#
+# = Arguments
+#
+# [reverse] If this argument is +true+, then the function will replace the
+#           current character with the character before it in the mapping.
+#           Otherwise the function will use the character after the current
+#           character as replacement.
+def convert_single_character(reverse = false)
+  line_index = ENV['TM_LINE_INDEX'].to_i
+
+  if line_index <= 0
+    TextMate.exit_show_tool_tip 'No character on the left side of the caret!'
+  else
+    print STDIN.read.replace_character(line_index, reverse).to_s
   end
 end
