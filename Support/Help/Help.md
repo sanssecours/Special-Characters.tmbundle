@@ -36,7 +36,7 @@ You can easily go back one or multiple replacement steps  just by invoking the t
 2. If there exists no standard character that looks like the symbol, then just use the first letter of the symbol to insert it. For example to add the special character `θ` (small letter **t**heta) invoke “Replace Character (→)” after you pressed the key `t`. If you invoke the command again, then it  replaces `θ` with the symbol `τ` (small letter **t**au).
 
 <center>
-    <img src="Images/Convert Single Character.gif" alt="Insert various special characters via “Convert Single Character”" style="width: 200px;"/>
+    <img src="Images/Convert Single Character.gif" alt="Insert various special characters via “Replace Character (→)”" style="width: 200px;"/>
 </center>
 
 ## Edit Configuration
