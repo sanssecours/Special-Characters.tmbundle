@@ -76,10 +76,10 @@ end
 # .
 class REPLACEMENT
   # This hash stores the mapping specified in the configuration.
-  CIRCULAR_MAPPING = CONFIGURATION.character_map
+  MAP_CONFIG = CONFIGURATION.character_map
 
   # This hash stores the forward character mapping.
-  MAP = Hash[CIRCULAR_MAPPING.map do |mapping|
+  MAP = Hash[MAP_CONFIG.map do |mapping|
     mappings = mapping + mapping.chars[0]
     Array.new((mappings.length - 1)) do |index|
       mappings[index..index + 1].chars
