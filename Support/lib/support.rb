@@ -11,13 +11,16 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
 
 # -- Classes -------------------------------------------------------------------
 
-# This class represents the current configuration for +REPLACEMENT+.
+# This class represents the current configuration for REPLACEMENT.
 class CONFIGURATION
+  # This directory contains the user modified configuration file.
   CONFIG_DIR = "#{Dir.home}/Library/Application Support/Special Characters"
                .freeze
+  # This path specifies the location of the user modified configuration file.
   CONFIG_FILE_USER = File.join(CONFIG_DIR, 'config.yaml')
+  # This path stores the location of the default configuration file.
   CONFIG_FILE = "#{ENV['TM_BUNDLE_SUPPORT']}/config/config.yaml".freeze
-
+  # This path contains the location of the +mate+ shell command.
   TM_MATE = ENV['TM_MATE']
 
   # Return the hash for the current configuration.
@@ -34,7 +37,7 @@ class CONFIGURATION
 
   # Open the configuration file in TextMate.
   #
-  # The original configuration is copied to the location +CONFIG_FILE_USER+ for
+  # The original configuration is copied to the location CONFIG_FILE_USER for
   # this purpose. TextMate then opens the copy of the original configuration
   # file.
   def self.edit
@@ -46,11 +49,11 @@ class CONFIGURATION
     TextMate.exit_show_tool_tip(error.message)
   end
 
-  # Get the location of the configuration file.
+  # Return the location of the configuration file.
   #
-  # If the user defined configuration file exists – +self.edit+ was invoked at
-  # least once – then this function returns the location of the user
-  # configuration file. Otherwise the function returns the location of the
+  # If the user defined configuration file exists – CONFIGURATION.edit was
+  # invoked at least once – then this function returns the location of the
+  # user configuration file. Otherwise the function returns the location of the
   # original configuration file, that is part of this bundle.
   #
   # = Output
@@ -64,14 +67,18 @@ end
 
 # This class represents a mapping table for single character strings.
 #
-# If there is a mapping for a certain character via +[]+, then there is also a
-# mapping back accessible via +self.previous+. This means the following
-# condition holds:
+# If there is a mapping for a certain character via REPLACEMENT.[], then there
+# is also a mapping back accessible via REPLACEMENT.previous. This means the
+# following condition holds:
 #
-#   +REPLACEMENT.previous(REPLACEMENT[char]) == char+.
+#   REPLACEMENT.previous(REPLACEMENT[char]) == char
+#
+# .
 class REPLACEMENT
+  # This hash stores the mapping specified in the configuration.
   CIRCULAR_MAPPING = CONFIGURATION.character_map
 
+  # This hash stores the forward character mapping.
   MAP = Hash[CIRCULAR_MAPPING.map do |mapping|
     mappings = mapping + mapping.chars[0]
     Array.new((mappings.length - 1)) do |index|
@@ -79,6 +86,7 @@ class REPLACEMENT
     end
   end.flatten.each_slice(2).to_a]
 
+  # This hash stored the backward character mapping.
   MAP_REVERSED = Hash[MAP.map { |key, value| [value, key] }]
 
   # Map a certain single character string to another single character string.
@@ -94,7 +102,7 @@ class REPLACEMENT
   #
   # = Examples
   #
-  #  doctest: Determine the mapping for certain characters
+  #  doctest: Determine the forward mapping for certain characters
   #
   #  >> REPLACEMENT['o']
   #  => 'ω'
@@ -110,7 +118,7 @@ class REPLACEMENT
 
   # Map a single character string (back) to another single character string.
   #
-  # This function returns the reversed mapping of +[]+.
+  # This function returns the reversed mapping of REPLACEMENT.[].
   #
   # = Examples
   #
@@ -158,20 +166,19 @@ class String
   # Replace the character before the one at byte position +position+.
   #
   # This function replaces the character before the character at byte index
-  # +position+. The function uses the character that the mapping
-  # +REPLACEMENT[character]+ returns as replacement, if +reverse+ is +false+.
-  # Otherwise it uses the replacement character returned by
-  # +REPLACEMENT.previous(character)+.
+  # +position+. If +reverse+ is +false+ the function uses the character that the
+  # mapping REPLACEMENT.[] returns. Otherwise it uses the replacement character
+  # returned by REPLACEMENT.previous().
   #
   # The method does not change the original string value.
   #
   # = Arguments
   #
-  # [position] The index of the character in bytes of the character after the
-  #            one this function replaces.
+  # [position] This is the byte index of the character (one position) after the
+  #            character this function replaces.
   #
   # [reverse]  This option specifies if the character returned by
-  #            +REPLACEMENT[]+ or +REPLACEMENT[].previous+ should be used as
+  #            REPLACEMENT.[] or REPLACEMENT.previous should be used as
   #            replacement.
   #
   # = Examples
