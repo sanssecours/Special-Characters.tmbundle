@@ -13,49 +13,71 @@
 
 # -- Small Letters -------------------------------------------------------------
 
-- aαₐ     # alpha, subscript alpha
-- bβᵦ     # beta, subscript beta
-- cχᵪ©    # chi, subscript chi, copyright
-- dδ      # delta
-- eεηₑ∈∉  # epsilon, eta, subscript e, element of, not an element of
-- gγᵧ     # gamma, subscript gamma
-- iιᵢⁱ    # iota, subscript i, superscript i
-- kκ      # kappa
-- lλ      # lambda
-- mμ      # mu
-- nνⁿ     # nu, superscript n
-- oω◦ₒ    # omega, white bullet, subscript o
-- pπφᵩψ   # pi, phi, subscript phi, psi
-- rρᵨᵣ    # rho, subscript rho, subscript r
-- sσς     # sigma, sigma (alternative form)
-- tθτ     # theta, tau
-- uυᵤ∪    # upsilon, subscript u, union
-- vᵥ∨↓✓   # subscript v, or, down arrow, checkmark
-- xξₓ     # xi, subscript x
-- zζ      # zeta
+# Alpha, Subscript Alpha, Alien Monster
+- aαₐ👾
+# Beta, Subscript Beta
+- bβᵦ
+# Chi, Subscript Chi, Copyright, Cyclone, Video Camera, Clapper Board
+- cχᵪ©📹🌀
+# Delta
+- dδ
+# Epsilon, Eta, Subscript E, Element Of, Not An Element Of
+- eεηₑ∈∉
+# Gamma, Subscript Gamma, Grinning Face
+- gγᵧ😀
+# Heavy Black Heart
+- h❤️
+# Iota, Subscript I, Superscript I
+- iιᵢⁱ
+# Kappa
+- kκ
+# Lambda
+- lλ
+# Mu, Musical Note, Microphone
+- mμ🎵🎙
+# Nu, Superscript N
+- nνⁿ
+# Omega, White Bullet, Subscript O
+- oω◦ₒ
+# Pi, Phi, Subscript Phi, Psi, Personal Computer, Pile Of Poo
+- pπφᵩψ💻💩
+# Rho, Subscript Rho, Subscript R
+- rρᵨᵣ
+# Sigma, Sigma (Alternative Form), Sparkles, Sunflower
+- sσς✨🌻
+# Theta, Tau, Television
+- tθτ📺
+# Upsilon, Subscript U, Union, Unicorn Face
+- uυᵤ∪🦄
+# Subscript V, Or, Down Arrow, Checkmark
+- vᵥ∨↓✓
+# Xi, Subscript X
+- xξₓ
+# Zeta
+- zζ
 
 # -- Capital Letters -----------------------------------------------------------
 
-- AΑ    # alpha
-- BΒ    # beta
-- CΧ    # chi
-- DΔ    # delta
-- EΕΗ∃∄ # epsilon, eta, exists, exists not
-- GΓ    # gamma
-- IΙ    # iota
-- KΚ    # kappa
-- LΛ    # lambda
-- MΜ    # mu
-- NΝℕ   # nu, double struck capital N
-- OΩ∅   # omega, empty set
-- PΠΦΨ  # pi, phi, psi
-- RΡ    # rho
-- SΣ    # sigma
-- TΘΤ   # theta, tau
-- UΥ    # upsilon
-- V∀    # for all
-- XΞ    # xi
-- ZΖℤ   # zeta, double struck capital Z
+- AΑ    # Alpha
+- BΒ    # Beta
+- CΧ    # Chi
+- DΔ    # Delta
+- EΕΗ∃∄ # Epsilon, Eta, Exists, Exists Not
+- GΓ    # Gamma
+- IΙ    # Iota
+- KΚ    # Kappa
+- LΛ    # Lambda
+- MΜ    # Mu
+- NΝℕ   # Nu, Double Struck Capital N
+- OΩ∅   # Omega, Empty Set
+- PΠΦΨ  # Pi, Phi, Psi
+- RΡ    # Rho
+- SΣ    # Sigma
+- TΘΤ   # Theta, Tau
+- UΥ    # Upsilon
+- V∀    # For All
+- XΞ    # Xi
+- ZΖℤ   # Zeta, Double Struck Capital Z
 
 # -- Misc ----------------------------------------------------------------------
 
@@ -69,4 +91,4 @@
 - )₎⁾⊃⊇⊋
 - '[⊏⟦⌊'
 - ']⊐⟧⌋'
-- $⇧⌥⌘↩⎋⇥⌫ # Key symbols
+- $⇧⌥⌘↩⎋⇥⌫ # Key Symbols
