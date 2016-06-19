@@ -13,7 +13,9 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/lib/support.rb'
 
 # -- Main ----------------------------------------------------------------------
 
-print CONFIGURATION.character_map.map { |row| row.chars.join '   ' }.join "\n"
+print(CONFIGURATION.character_map.map do |row|
+  row.characters.join '   '
+end.join "\n")
 
 </string>
 	<key>input</key>

@@ -11,6 +11,97 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
 
 # -- Classes -------------------------------------------------------------------
 
+# This class adds extra functionality for manipulating strings.
+class String
+  # Determine the list of single characters contained in this string.
+  #
+  # = Output
+  #
+  # This function returns an array containing single character strings.
+  #
+  # = Examples
+  #
+  #  doctest: Determine the characters contained in a string
+  #  >> '❤️🌻🦄ö'.characters
+  #  => ['❤️', '🌻', '🦄', 'ö']
+  def characters
+    scan(/.\p{M}?/)
+  end
+
+  # Determine the character before the character at byte position +position+.
+  #
+  # = Arguments
+  #
+  # [position] The index of the character in bytes of the character after the
+  #            one this function returns.
+  #
+  # = Output
+  #
+  # This function returns the character before the one at byte position
+  # +position+. If this character does not exist, then the function returns
+  # +nil+.
+  #
+  # = Examples
+  #
+  #  doctest: Determine the character at a certain position of a string
+  #
+  #  >> text = 'Das Island Manöver'
+  #  >> text.char_before(1)
+  #  => "D"
+  #  >> text.char_before(16)
+  #  => "ö"
+  #  >> text.char_before(0)
+  #  => nil
+  def char_before(position)
+    byteslice(0, position).characters[-1]
+  end
+
+  # Replace the character before the one at byte position +position+.
+  #
+  # This function replaces the character before the character at byte index
+  # +position+. If +reverse+ is +false+ the function uses the character that the
+  # mapping REPLACEMENT.[] returns. Otherwise it uses the replacement character
+  # returned by REPLACEMENT.previous().
+  #
+  # The method does not change the original string value.
+  #
+  # = Arguments
+  #
+  # [position] This is the byte index of the character (one position) after the
+  #            character this function replaces.
+  #
+  # [reverse]  This option specifies if the character returned by
+  #            REPLACEMENT.[] or REPLACEMENT.previous should be used as
+  #            replacement.
+  #
+  # = Examples
+  #
+  #  doctest: Replace the character at a certain position of a string
+  #
+  #  >> 'Touché Amoré'.replace_character(4)
+  #  => "Touχhé Amoré"
+  #  >> 'aaa'.replace_character(1)
+  #  => "αaa"
+  #  >> 'hell_'.replace_character(5)
+  #  => "hell_"
+  #  >> text = 'haha'
+  #  >> text.replace_character(2)
+  #  => "hαha"
+  #  >> text
+  #  => "haha"
+  #  >> 'test'.replace_character(2, true)
+  #  => "t∉st"
+  def replace_character(position, reverse = false)
+    character = if reverse
+                  REPLACEMENT.previous(char_before(position))
+                else
+                  REPLACEMENT[char_before(position)]
+                end
+    character.nil? ? self : (byteslice(0, position).characters[0..-2].join +
+                             character + byteslice(position..-1))
+  end
+end
+
 # This class represents the current configuration for REPLACEMENT.
 class CONFIGURATION
   # This directory contains the user modified configuration file.
@@ -80,9 +171,9 @@ class REPLACEMENT
 
   # This hash stores the forward character mapping.
   MAP = Hash[MAP_CONFIG.map do |mapping|
-    mappings = mapping + mapping.chars[0]
-    Array.new((mappings.length - 1)) do |index|
-      mappings[index..index + 1].chars
+    mappings = mapping + mapping.characters[0]
+    Array.new((mappings.characters.length - 1)) do |index|
+      mappings.characters[index..index + 1]
     end
   end.flatten.each_slice(2).to_a]
 
@@ -130,82 +221,6 @@ class REPLACEMENT
   #  => 'v'
   def self.previous(character)
     MAP_REVERSED[character]
-  end
-end
-
-# This class adds extra functionality for manipulating strings.
-class String
-  # Determine the character before the character at byte position +position+.
-  #
-  # = Arguments
-  #
-  # [position] The index of the character in bytes of the character after the
-  #            one this function returns.
-  #
-  # = Output
-  #
-  # This function returns the character before the one at byte position
-  # +position+. If this character does not exist, then the function returns
-  # +nil+.
-  #
-  # = Examples
-  #
-  #  doctest: Determine the character at a certain position of a string.
-  #
-  #  >> text = 'Das Island Manöver'
-  #  >> text.char_before(1)
-  #  => "D"
-  #  >> text.char_before(16)
-  #  => "ö"
-  #  >> text.char_before(0)
-  #  => nil
-  def char_before(position)
-    byteslice(0, position).chars[-1]
-  end
-
-  # Replace the character before the one at byte position +position+.
-  #
-  # This function replaces the character before the character at byte index
-  # +position+. If +reverse+ is +false+ the function uses the character that the
-  # mapping REPLACEMENT.[] returns. Otherwise it uses the replacement character
-  # returned by REPLACEMENT.previous().
-  #
-  # The method does not change the original string value.
-  #
-  # = Arguments
-  #
-  # [position] This is the byte index of the character (one position) after the
-  #            character this function replaces.
-  #
-  # [reverse]  This option specifies if the character returned by
-  #            REPLACEMENT.[] or REPLACEMENT.previous should be used as
-  #            replacement.
-  #
-  # = Examples
-  #
-  #  doctest: Replace the character at a certain position of a string.
-  #
-  #  >> 'Touché Amoré'.replace_character(4)
-  #  => "Touχhé Amoré"
-  #  >> 'aaa'.replace_character(1)
-  #  => "αaa"
-  #  >> 'hell_'.replace_character(5)
-  #  => "hell_"
-  #  >> text = 'haha'
-  #  >> text.replace_character(2)
-  #  => "hαha"
-  #  >> text
-  #  => "haha"
-  #  >> 'test'.replace_character(2, true)
-  #  => "t∉st"
-  def replace_character(position, reverse = false)
-    character = if reverse
-                  REPLACEMENT.previous(char_before(position))
-                else
-                  REPLACEMENT[char_before(position)]
-                end
-    character.nil? ? self : (byteslice(0, position).chars[0..-2].join +
-                             character + byteslice(position..-1))
   end
 end
 
