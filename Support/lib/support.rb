@@ -152,7 +152,7 @@ class CONFIGURATION
   # The function returns a string containing the location of the configuration
   # file.
   def self.location
-    (File.exist? CONFIG_FILE_USER) ? CONFIG_FILE_USER : CONFIG_FILE
+    File.exist?(CONFIG_FILE_USER) ? CONFIG_FILE_USER : CONFIG_FILE
   end
 end
 
