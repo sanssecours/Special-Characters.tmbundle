@@ -79,6 +79,11 @@ class String
   #            REPLACEMENT.[] or REPLACEMENT.previous should be used as
   #            replacement.
   #
+  # [add_null] Add a null byte after the replaced character. The null byte is
+  #            useful as marker. If you want to insert text after the character
+  #            replacement, just activate this option and use something like
+  #            +text.sub("\0", add_after_replacement)+ afterwards.
+  #
   # = Examples
   #
   #  doctest: Replace the character at a certain position of a string
@@ -96,14 +101,18 @@ class String
   #  => "haha"
   #  >> 'test'.replace_character(2, true)
   #  => "t∉st"
-  def replace_character(position, reverse = false)
+  #  >> 'test'.replace_character(2, true, true)
+  #  => "t∉\u0000st"
+  #
+  def replace_character(position, reverse = false, add_null = false)
     character = if reverse
                   REPLACEMENT.previous(char_before(position))
                 else
                   REPLACEMENT[char_before(position)]
                 end
     character.nil? ? self : (byteslice(0, position).characters[0..-2].join +
-                             character + byteslice(position..-1))
+                             character + ("\0" if add_null).to_s +
+                             byteslice(position..-1))
   end
 end
 
@@ -248,6 +257,7 @@ def convert_single_character(reverse = false)
   if line_index <= 0
     TextMate.exit_show_tool_tip 'No character on the left side of the caret!'
   else
-    print STDIN.read.replace_character(line_index, reverse).to_s
+    snippet = e_sn(STDIN.read.replace_character(line_index, reverse, true))
+    print(snippet.sub("\0", '$0'))
   end
 end

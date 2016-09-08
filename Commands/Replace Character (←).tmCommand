@@ -24,9 +24,9 @@ convert_single_character(reverse_direction = true)
 	<key>name</key>
 	<string>Replace Character (←)</string>
 	<key>outputCaret</key>
-	<string>interpolateByLine</string>
+	<string>afterOutput</string>
 	<key>outputFormat</key>
-	<string>text</string>
+	<string>snippet</string>
 	<key>outputLocation</key>
 	<string>replaceInput</string>
 	<key>uuid</key>
