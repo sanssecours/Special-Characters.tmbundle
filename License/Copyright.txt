@@ -1,3 +1,0 @@
-The following statement applies to all files in this repository:
-
-Copyright (©) 2015 René Schwaiger
