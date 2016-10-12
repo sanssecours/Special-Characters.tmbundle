@@ -23,8 +23,8 @@ For more information about the bundle's functionality please take a look at the 
 ## Terminal
 
 ```bash
-mkdir -p "$HOME/Library/Application Support/Avian/Bundles"
-cd "$HOME/Library/Application Support/Avian/Bundles"
+mkdir -p "$HOME/Library/Application Support/TextMate/Bundles"
+cd "$HOME/Library/Application Support/TextMate/Bundles"
 git clone https://github.com/sanssecours/Special-Characters.tmbundle
 ```
 
